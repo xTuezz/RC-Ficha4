@@ -10,6 +10,7 @@
 //
 // Tarefa 1: substitui este array vazio pelo array cards do teu server
 
+import { useState } from "react";
 import Card from "./Card"; 
 
 // (o que fizeste na aula 2).
@@ -21,20 +22,47 @@ const cards = [
   { name: "\"You\"", type: "Survivor", health: 100, stamina: 100 },
 ];
 
-const length = cards.length
+
 
 function App() {
+
+  const [filter, setFilter] = useState("All");
+
+  const filteredCards = cards.filter((card) => {
+    if (filter === "Survivor") {
+      return card.type === "Survivor";
+    }
+
+    if (filter === "Killer") {
+      return card.type === "Killer";
+    }
+
+    return true;
+  });
+
+
   return (
     <main>
       <h1>My collection</h1>
       
       <br />
-      <p>I have {length} cards!</p>
+        <p>I have {length} cards!</p>
       <br />
 
+      <button onClick={() => (setFilter("All"))}> 
+        All
+      </button>
+      <button onClick={() => (setFilter("Survivor"))}> 
+        Survivors
+      </button>
+      <button onClick={() => (setFilter("Killer"))}> 
+        Killers
+      </button>
+
+    
       <ul>
         
-          {cards.map((card) => 
+          {filteredCards.map((card) => 
             <Card key={card.name} {...card}></Card>
           )}
      
