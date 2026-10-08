@@ -46,7 +46,7 @@ function App() {
       <h1>My collection</h1>
       
       <br />
-        <p>I have {length} cards!</p>
+        <p>I have {filteredCards.length} cards!</p>
       <br />
 
       <button onClick={() => (setFilter("All"))}> 
