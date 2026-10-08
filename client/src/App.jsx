@@ -10,7 +10,13 @@
 //
 // Tarefa 1: substitui este array vazio pelo array cards do teu server
 // (o que fizeste na aula 2).
-const cards = [];
+const cards = [
+  { name: "Recursive", type: "Killer", health: 2009, stamina: 110 },
+  { name: "Ethan", type: "Survivor", health: 4, stamina: 100 },
+  { name: "Gab", type: "Survivor", health: 7, stamina: 100 },
+  { name: "Fanti", type: "Survivor", health: 4, stamina: 100 },
+  { name: "\"You\"", type: "Survivor", health: 4, stamina: 100 },
+];
 
 function App() {
   return (
