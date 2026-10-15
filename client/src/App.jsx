@@ -12,6 +12,7 @@
 
 import { useState } from "react";
 import Card from "./Card"; 
+import pickRandom from "./Random"
 
 // (o que fizeste na aula 2).
 const cards = [
@@ -28,6 +29,7 @@ function App() {
 
   const [filter, setFilter] = useState("All");
   const [cardName, setCardName] = useState("");
+  const [rdmCard, setRdmCard] = useState(null);
 
   const filteredCards = cards.filter((card) => {
     const matchesType =
@@ -56,6 +58,7 @@ function App() {
       <button onClick={() => (setFilter("Killer"))}> 
         Killers
       </button>
+      
 
       <input type="text" placeholder="Card name goes here..." value={cardName} onChange={(event) => setCardName(event.target.value)}/>
     
@@ -67,6 +70,15 @@ function App() {
      
       </ul>
 
+
+      <button onClick={() => setRdmCard(pickRandom(filteredCards))}>
+        Random
+      </button>
+      
+      <ul>
+        {rdmCard && <Card {...rdmCard} />}
+      </ul>
+      
     </main>
   );
 }
