@@ -27,19 +27,17 @@ const cards = [
 function App() {
 
   const [filter, setFilter] = useState("All");
+  const [cardName, setCardName] = useState("");
 
   const filteredCards = cards.filter((card) => {
-    if (filter === "Survivor") {
-      return card.type === "Survivor";
-    }
+    const matchesType =
+      filter === "All" || card.type === filter;
 
-    if (filter === "Killer") {
-      return card.type === "Killer";
-    }
+    const matchesName =
+      card.name.toLowerCase().includes(cardName.toLowerCase());
 
-    return true;
+    return matchesType && matchesName;
   });
-
 
   return (
     <main>
@@ -59,6 +57,7 @@ function App() {
         Killers
       </button>
 
+      <input type="text" placeholder="Card name goes here..." value={cardName} onChange={(event) => setCardName(event.target.value)}/>
     
       <ul>
         
@@ -73,3 +72,5 @@ function App() {
 }
 
 export default App;
+
+
